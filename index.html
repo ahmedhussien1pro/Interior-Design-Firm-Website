@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE Interiors - Modern Design Studio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rich-black': '#222222',
+                        'warm-gold': '#C9B38B',
+                        'light-gray': '#F5F5F5',
+                        'wooden-brown': '#A67C52',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient': 'gradient 8s linear infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                        'slide-in-right': 'slide-in-right 0.8s ease-out',
+                        'scale-in': 'scale-in 0.5s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <link rel="shortcut icon" href="./assets/imgs/favicon.svg" type="image/x-icon">
+    
+</head>
+<body class="font-inter text-rich-black overflow-x-hidden custom-scrollbar">
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+    
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button class="bg-warm-gold text-rich-black w-16 h-16 rounded-full shadow-2xl hover:shadow-warm-gold/50 transition-all duration-300 hover:scale-110 animate-pulse-glow" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 transition-all duration-500 py-4" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="text-3xl font-playfair font-bold text-warm-gold tracking-wider">
+                    <i class="fas fa-home mr-2"></i>LUXE
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                    </a>
+                    <a href="#about" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                       About
+                       <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                    </a>
+                    <a href="#projects" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                    </a>
+                    <a href="#process" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                        Process
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                    </a>
+                    <a href="#contact" class="bg-warm-gold text-rich-black px-6 py-2 rounded-full hover:bg-wooden-brown transition-all duration-300 font-semibold">
+                        Contact
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars" id="mobileMenuIcon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-rich-black/95 backdrop-blur-lg transform -translate-y-full transition-transform duration-300" id="mobileMenu">
+            <div class="container mx-auto px-6 py-8">
+                <div class="flex flex-col space-y-6">
+                    <a href="#home" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
+                        Home
+                    </a>
+                    <a href="#about" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
+                       About
+                    </a>
+                    <a href="#projects" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
+                        Projects
+                    </a>
+                    <a href="#process" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
+                        Process
+                    </a>
+                    <a href="#contact" class="bg-warm-gold text-rich-black px-6 py-3 rounded-full text-center font-semibold">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center gradient-bg">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-warm-gold/20 rounded-full animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-48 h-48 bg-wooden-brown/20 rounded-full animate-float" style="animation-delay: -2s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-white/10 rounded-full animate-float" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-slide-up">
+                <h1 class="font-playfair text-6xl md:text-8xl font-bold text-white mb-6 text-shadow">
+                    Sophisticated
+                    <span class="block text-warm-gold">Interiors</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Creating timeless spaces that blend luxury with functionality, where every detail tells your unique story
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                    <button class="group bg-warm-gold text-rich-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-wooden-brown hover:scale-105 transition-all duration-300 shadow-2xl">
+                        <i class="fas fa-play mr-2 group-hover:mr-3 transition-all"></i>
+                        View Portfolio
+                    </button>
+                    <button class="glass-effect text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300">
+                        <i class="fas fa-calendar mr-2"></i>
+                        Book Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-warm-gold rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Preview -->
+    <section class="py-20 bg-light-gray">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-5xl font-bold text-rich-black mb-4">Featured Projects</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover our latest creations that showcase the perfect blend of elegance and innovation</p>
+            </div>
+            
+            <!-- Interactive Portfolio Slider -->
+            <div class="relative max-w-6xl mx-auto">
+                <div class="portfolio-container overflow-hidden rounded-3xl shadow-2xl">
+                    <div class="portfolio-slider flex transition-transform duration-700 ease-in-out" id="portfolioSlider">
+                        <!-- Slide 1 -->
+                        <div class="portfolio-slide w-full flex-shrink-0 relative">
+                            <div class="relative h-96 md:h-[500px] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" 
+                                     alt="Manhattan Penthouse Interior" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+                                    <div class="text-white text-center w-full">
+                                        <h3 class="font-playfair text-4xl font-bold mb-4">Manhattan Penthouse</h3>
+                                        <p class="text-lg opacity-90 max-w-2xl mx-auto">A sophisticated urban sanctuary featuring custom millwork, imported marble surfaces, and curated art pieces creating an intimate atmosphere.</p>
+                                        <div class="mt-6 flex justify-center space-x-4">
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-tag mr-2"></i>Residential
+                                            </span>
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-star mr-2"></i>Award Winner
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="portfolio-slide w-full flex-shrink-0 relative">
+                            <div class="relative h-96 md:h-[500px] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                     alt="Historic Brownstone Interior" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+                                    <div class="text-white text-center w-full">
+                                        <h3 class="font-playfair text-4xl font-bold mb-4">Historic Brownstone</h3>
+                                        <p class="text-lg opacity-90 max-w-2xl mx-auto">Thoughtful restoration blending period architectural details with contemporary functionality, featuring rich wood paneling and vintage elements.</p>
+                                        <div class="mt-6 flex justify-center space-x-4">
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-tag mr-2"></i>Restoration
+                                            </span>
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-heart mr-2"></i>Client Favorite
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="portfolio-slide w-full flex-shrink-0 relative">
+                            <div class="relative h-96 md:h-[500px] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+                                     alt="Corporate Headquarters Interior" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+                                    <div class="text-white text-center w-full">
+                                        <h3 class="font-playfair text-4xl font-bold mb-4">Corporate Headquarters</h3>
+                                        <p class="text-lg opacity-90 max-w-2xl mx-auto">Award-winning commercial design balancing productivity with comfort through innovative lighting and biophilic elements that inspire creativity.</p>
+                                        <div class="mt-6 flex justify-center space-x-4">
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-tag mr-2"></i>Commercial
+                                            </span>
+                                            <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm">
+                                                <i class="fas fa-trophy mr-2"></i>Design Award
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <div class="flex justify-center mt-8 space-x-4">
+                    <button class="slider-dot w-4 h-4 rounded-full bg-warm-gold transition-all duration-300 opacity-100" onclick="goToSlide(0)"></button>
+                    <button class="slider-dot w-4 h-4 rounded-full bg-gray-400 transition-all duration-300 opacity-50 hover:opacity-100" onclick="goToSlide(1)"></button>
+                    <button class="slider-dot w-4 h-4 rounded-full bg-gray-400 transition-all duration-300 opacity-50 hover:opacity-100" onclick="goToSlide(2)"></button>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/20 backdrop-blur text-white w-12 h-12 rounded-full hover:bg-white/30 transition-all duration-300" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/20 backdrop-blur text-white w-12 h-12 rounded-full hover:bg-white/30 transition-all duration-300" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Client Testimonials -->
+            <div class="mt-20 grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-xl hover-glow transition-all duration-300 reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-warm-gold text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"LUXE Interiors transformed our space beyond our wildest dreams. Every detail reflects our personality while maintaining sophisticated elegance."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-warm-gold rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            SM
+                        </div>
+                        <div>
+                            <p class="font-semibold text-rich-black">Sarah Mitchell</p>
+                            <p class="text-sm text-gray-500">Private Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-xl hover-glow transition-all duration-300 reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-warm-gold text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"The team's attention to detail and ability to balance form with function is unparalleled. Our headquarters has become a destination."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-wooden-brown rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            DC
+                        </div>
+                        <div>
+                            <p class="font-semibold text-rich-black">David Chen</p>
+                            <p class="text-sm text-gray-500">CEO, TechFlow</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-2xl shadow-xl hover-glow transition-all duration-300 reveal">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-warm-gold text-lg">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Professional, creative, and incredibly responsive. They turned our vision into reality with exceptional craftsmanship."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-rich-black rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            AR
+                        </div>
+                        <div>
+                            <p class="font-semibold text-rich-black">Amanda Rodriguez</p>
+                            <p class="text-sm text-gray-500">Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="font-playfair text-5xl font-bold text-rich-black mb-6">Our Philosophy</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        At LUXE Interiors, we believe that exceptional design transcends trends. Our approach combines timeless elegance with contemporary functionality, creating spaces that tell your unique story.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        With over 15 years of experience in luxury residential and commercial design, we specialize in creating environments that inspire, comfort, and endure.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-warm-gold mb-2">150+</div>
+                            <p class="text-gray-600">Projects Completed</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-warm-gold mb-2">15+</div>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="bg-gradient-to-br from-warm-gold to-wooden-brown p-8 rounded-3xl text-white">
+                        <h3 class="font-playfair text-3xl font-bold mb-6 text-center">Awards & Recognition</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur">
+                                <i class="fas fa-trophy text-2xl mr-4 text-yellow-300"></i>
+                                <div>
+                                    <p class="font-semibold">Interior Design Excellence Award</p>
+                                    <p class="text-sm opacity-80">2024</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur">
+                                <i class="fas fa-star text-2xl mr-4 text-yellow-300"></i>
+                                <div>
+                                    <p class="font-semibold">Luxury Lifestyle Design Award</p>
+                                    <p class="text-sm opacity-80">2023</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur">
+                                <i class="fas fa-medal text-2xl mr-4 text-yellow-300"></i>
+                                <div>
+                                    <p class="font-semibold">Best Commercial Design</p>
+                                    <p class="text-sm opacity-80">2023</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur">
+                                <i class="fas fa-crown text-2xl mr-4 text-yellow-300"></i>
+                                <div>
+                                    <p class="font-semibold">Featured in Architectural Digest</p>
+                                    <p class="text-sm opacity-80">2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-light-gray">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-5xl font-bold text-rich-black mb-4">Our Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Explore our diverse collection of residential, commercial, and hospitality projects</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                <button class="filter-btn active bg-warm-gold text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>All Projects
+                </button>
+                <button class="filter-btn bg-white text-rich-black px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-warm-gold hover:text-white" data-filter="residential">
+                    <i class="fas fa-home mr-2"></i>Residential
+                </button>
+                <button class="filter-btn bg-white text-rich-black px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-warm-gold hover:text-white" data-filter="commercial">
+                    <i class="fas fa-building mr-2"></i>Commercial
+                </button>
+                <button class="filter-btn bg-white text-rich-black px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-warm-gold hover:text-white" data-filter="hospitality">
+                    <i class="fas fa-hotel mr-2"></i>Hospitality
+                </button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-xl hover-glow transition-all duration-500 reveal" data-category="commercial">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+                             alt="Executive Offices" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold mb-2">Financial District Tower</h4>
+                        <p class="text-gray-600 mb-4">Sophisticated corporate environment designed for productivity and collaboration.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-wooden-brown/20 text-wooden-brown px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-briefcase mr-1"></i>Commercial
+                            </span>
+                            <button class="text-warm-gold hover:text-wooden-brown transition-colors">
+                                <i class="fas fa-arrow-right text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-xl hover-glow transition-all duration-500 reveal" data-category="hospitality">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Luxury Hotel Lobby" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold mb-2">Boutique Hotel NYC</h4>
+                        <p class="text-gray-600 mb-4">Welcoming hospitality space that creates memorable first impressions.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rich-black/20 text-rich-black px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-concierge-bell mr-1"></i>Hospitality
+                            </span>
+                            <button class="text-warm-gold hover:text-wooden-brown transition-colors">
+                                <i class="fas fa-arrow-right text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-xl hover-glow transition-all duration-500 reveal" data-category="residential">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2158&q=80" 
+                             alt="Contemporary Loft" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold mb-2">SoHo Artist Studio</h4>
+                        <p class="text-gray-600 mb-4">Creative living space that inspires artistic expression and modern living.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-warm-gold/20 text-warm-gold px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-palette mr-1"></i>Residential
+                            </span>
+                            <button class="text-warm-gold hover:text-wooden-brown transition-colors">
+                                <i class="fas fa-arrow-right text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-xl hover-glow transition-all duration-500 reveal" data-category="commercial">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+                             alt="Creative Workspace" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold mb-2">Design Agency HQ</h4>
+                        <p class="text-gray-600 mb-4">Innovative workspace fostering creativity and collaborative thinking.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-wooden-brown/20 text-wooden-brown px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-lightbulb mr-1"></i>Commercial
+                            </span>
+                            <button class="text-warm-gold hover:text-wooden-brown transition-colors">
+                                <i class="fas fa-arrow-right text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-xl hover-glow transition-all duration-500 reveal" data-category="hospitality">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Fine Dining Restaurant" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-playfair text-xl font-semibold mb-2">Michelin Star Restaurant</h4>
+                        <p class="text-gray-600 mb-4">Elegant dining atmosphere that enhances the culinary experience.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rich-black/20 text-rich-black px-3 py-1 rounded-full text-sm font-medium">
+                                <i class="fas fa-wine-glass mr-1"></i>Hospitality
+                            </span>
+                            <button class="text-warm-gold hover:text-wooden-brown transition-colors">
+                                <i class="fas fa-arrow-right text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-5xl font-bold text-rich-black mb-4">Our Process</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">From initial consultation to final reveal, we guide you through every step of your design journey</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="process-step text-center reveal">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-warm-gold to-wooden-brown rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-warm-gold/50 transition-all duration-300">
+                            <i class="fas fa-search text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-rich-black rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">1</span>
+                        </div>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-rich-black mb-4">Discovery</h3>
+                    <p class="text-gray-600 leading-relaxed">We begin with an in-depth consultation to understand your vision, lifestyle, and project goals. This foundation ensures every design decision aligns with your unique needs.</p>
+                </div>
+                
+                <div class="process-step text-center reveal">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-wooden-brown to-rich-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-wooden-brown/50 transition-all duration-300">
+                            <i class="fas fa-drafting-compass text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-rich-black rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">2</span>
+                        </div>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-rich-black mb-4">Design Development</h3>
+                    <p class="text-gray-600 leading-relaxed">Our team creates detailed concepts, mood boards, and 3D visualizations. We collaborate closely with you to refine every element before moving forward.</p>
+                </div>
+                
+                <div class="process-step text-center reveal">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-rich-black to-warm-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-rich-black/50 transition-all duration-300">
+                            <i class="fas  fa-swatchbook text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-rich-black rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">3</span>
+                        </div>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-rich-black mb-4">Specification</h3>
+                    <p class="text-gray-600 leading-relaxed">We source premium materials, furnishings, and finishes. Our established relationships with top suppliers ensure access to the finest quality pieces.</p>
+                </div>
+                
+                <div class="process-step text-center reveal">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-warm-gold to-rich-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg hover:shadow-warm-gold/50 transition-all duration-300">
+                            <i class="fas fa-hammer text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-rich-black rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">4</span>
+                        </div>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-rich-black mb-4">Implementation</h3>
+                    <p class="text-gray-600 leading-relaxed">Our experienced project managers coordinate all aspects of installation, ensuring seamless execution, quality control, and on-time completion.</p>
+                </div>
+            </div>
+            
+            <!-- Timeline Visualization -->
+            <div class="mt-16 max-w-4xl mx-auto reveal">
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-warm-gold to-wooden-brown"></div>
+                    
+                    <div class="space-y-12">
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <h4 class="font-playfair text-xl font-bold text-rich-black mb-2">Week 1-2</h4>
+                                <p class="text-gray-600">Initial consultation and site analysis</p>
+                            </div>
+                            <div class="w-8 h-8 bg-warm-gold rounded-full flex items-center justify-center relative z-10">
+                                <i class="fas fa-calendar text-white text-sm"></i>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-light-gray p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Discovery phase begins</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-light-gray p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Concept presentation</p>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-wooden-brown rounded-full flex items-center justify-center relative z-10">
+                                <i class="fas fa-lightbulb text-white text-sm"></i>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <h4 class="font-playfair text-xl font-bold text-rich-black mb-2">Week 3-6</h4>
+                                <p class="text-gray-600">Design development and refinement</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <h4 class="font-playfair text-xl font-bold text-rich-black mb-2">Week 7-10</h4>
+                                <p class="text-gray-600">Material sourcing and procurement</p>
+                            </div>
+                            <div class="w-8 h-8 bg-rich-black rounded-full flex items-center justify-center relative z-10">
+                                <i class="fas fa-shopping-cart text-white text-sm"></i>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <div class="bg-light-gray p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Final approvals</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="w-5/12 text-right pr-8">
+                                <div class="bg-light-gray p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Project completion</p>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 bg-warm-gold rounded-full flex items-center justify-center relative z-10">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </div>
+                            <div class="w-5/12 pl-8">
+                                <h4 class="font-playfair text-xl font-bold text-rich-black mb-2">Week 11-16</h4>
+                                <p class="text-gray-600">Installation and final styling</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-rich-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="font-playfair text-5xl font-bold text-warm-gold mb-4">Let's Create Something Beautiful</h2>
+                    <p class="text-xl text-white/80 max-w-2xl mx-auto">Ready to transform your space? Let's discuss your vision and create something extraordinary together.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Form -->
+                    <div class="reveal">
+                        <form class="space-y-6" id="contactForm">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-warm-gold font-semibold mb-2" for="firstName">
+                                        <i class="fas fa-user mr-2"></i>First Name
+                                    </label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                           class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                                </div>
+                                <div>
+                                    <label class="block text-warm-gold font-semibold mb-2" for="lastName">
+                                        <i class="fas fa-user mr-2"></i>Last Name
+                                    </label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                           class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-warm-gold font-semibold mb-2" for="email">
+                                    <i class="fas fa-envelope mr-2"></i>Email Address
+                                </label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-warm-gold font-semibold mb-2" for="phone">
+                                    <i class="fas fa-phone mr-2"></i>Phone Number
+                                </label>
+                                <input type="tel" id="phone" name="phone"
+                                       class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-warm-gold font-semibold mb-2" for="projectType">
+                                    <i class="fas fa-building mr-2"></i>Project Type
+                                </label>
+                                <select id="projectType" name="projectType" required
+                                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                                    <option value="" class="text-black">Select project type</option>
+                                    <option value="residential" class="text-black">Residential</option>
+                                    <option value="commercial" class="text-black">Commercial</option>
+                                    <option value="hospitality" class="text-black">Hospitality</option>
+                                    <option value="consultation" class="text-black">Consultation Only</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-warm-gold font-semibold mb-2" for="budget">
+                                    <i class="fas fa-dollar-sign mr-2"></i>Project Budget
+                                </label>
+                                <select id="budget" name="budget"
+                                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300">
+                                    <option value="" class="text-black">Select budget range</option>
+                                    <option value="under-50k" class="text-black">Under $50,000</option>
+                                    <option value="50k-100k" class="text-black">$50,000 - $100,000</option>
+                                    <option value="100k-250k" class="text-black">$100,000 - $250,000</option>
+                                    <option value="250k-500k" class="text-black">$250,000 - $500,000</option>
+                                    <option value="over-500k" class="text-black">Over $500,000</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-warm-gold font-semibold mb-2" for="message">
+                                    <i class="fas fa-comments mr-2"></i>Tell Us About Your Vision
+                                </label>
+                                <textarea id="message" name="message" rows="5" required
+                                          class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-warm-gold focus:outline-none focus:ring-2 focus:ring-warm-gold/20 transition-all duration-300"
+                                          placeholder="Describe your project, timeline, style preferences, and any specific requirements..."></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-warm-gold to-wooden-brown text-rich-black font-bold py-4 px-8 rounded-lg hover:from-wooden-brown hover:to-warm-gold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-warm-gold/50">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Request Consultation
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="reveal">
+                        <div class="bg-white/5 backdrop-blur p-8 rounded-2xl">
+                            <h3 class="font-playfair text-3xl font-bold text-warm-gold mb-6">Get In Touch</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-warm-gold rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-rich-black"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">Visit Our Showroom</h4>
+                                        <p class="text-white/70">123 Design Avenue<br>New York, NY 10001</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-wooden-brown rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-phone text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">Call Us</h4>
+                                        <p class="text-white/70">(555) 123-LUXE<br>Mon-Fri: 9AM-6PM EST</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-rich-black border-2 border-warm-gold rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-warm-gold"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">Email Us</h4>
+                                        <p class="text-white/70">hello@luxeinteriors.com<br>We respond within 24 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media -->
+                            <div class="mt-8 pt-8 border-t border-white/20">
+                                <h4 class="font-semibold text-white mb-4">Follow Our Journey</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-warm-gold hover:text-rich-black transition-all duration-300">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-warm-gold hover:text-rich-black transition-all duration-300">
+                                        <i class="fab fa-pinterest"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-warm-gold hover:text-rich-black transition-all duration-300">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-warm-gold hover:text-rich-black transition-all duration-300">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-rich-black text-white py-12 border-t border-warm-gold/20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-3xl font-playfair font-bold text-warm-gold mb-4">
+                        <i class="fas fa-home mr-2"></i>LUXE
+                    </div>
+                    <p class="text-white/70 mb-4">Creating sophisticated interiors that stand the test of time.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white/50 hover:text-warm-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white/50 hover:text-warm-gold transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white/50 hover:text-warm-gold transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-warm-gold mb-4">Services</h3>
+                    <ul class="space-y-2 text-white/70">
+                        <li><a href="#" class="hover:text-white transition-colors">Commercial Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hospitality Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Consultation Services</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-warm-gold mb-4">Company</h3>
+                    <ul class="space-y-2 text-white/70">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#projects" class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#process" class="hover:text-white transition-colors">Our Process</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-warm-gold mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-white/70">
+                        <p><i class="fas fa-map-marker-alt mr-2 text-warm-gold"></i>123 Design Avenue, NYC</p>
+                        <p><i class="fas fa-phone mr-2 text-warm-gold"></i>(555) 123-LUXE</p>
+                        <p><i class="fas fa-envelope mr-2 text-warm-gold"></i>hello@luxeinteriors.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 mt-8 text-center">
+                <p class="text-white/50">&copy; 2024 LUXE Interiors. All rights reserved. | Crafted with passion for exceptional design.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/JS/script.js"></script>
+</body>
+</html>
