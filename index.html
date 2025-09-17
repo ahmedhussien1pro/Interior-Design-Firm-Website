@@ -56,68 +56,71 @@
     </div>
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 transition-all duration-500 py-4" id="navbar">
-        <div class="container mx-auto px-6">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <div class="text-3xl font-playfair font-bold text-warm-gold tracking-wider">
-                    <i class="fas fa-home mr-2"></i>LUXE
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
-                        Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
-                    </a>
-                    <a href="#about" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
-                       About
-                       <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
-                    </a>
-                    <a href="#projects" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
-                        Projects
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
-                    </a>
-                    <a href="#process" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
-                        Process
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
-                    </a>
-                    <a href="#contact" class="bg-warm-gold text-rich-black px-6 py-2 rounded-full hover:bg-wooden-brown transition-all duration-300 font-semibold">
-                        Contact
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
-                    </a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars" id="mobileMenuIcon"></i>
-                </button>
+<nav class="fixed top-0 w-full z-40 transition-all duration-500 py-4" id="navbar">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-3xl font-playfair font-bold text-warm-gold tracking-wider">
+                <i class="fas fa-home mr-2"></i>LUXE
             </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="md:hidden bg-rich-black/95 backdrop-blur-lg transform -translate-y-full transition-transform duration-300" id="mobileMenu">
-            <div class="container mx-auto px-6 py-8">
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
-                        Home
-                    </a>
-                    <a href="#about" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
-                       About
-                    </a>
-                    <a href="#projects" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
-                        Projects
-                    </a>
-                    <a href="#process" class="text-white hover:text-warm-gold transition-colors flex items-center text-lg">
-                        Process
-                    </a>
-                    <a href="#contact" class="bg-warm-gold text-rich-black px-6 py-3 rounded-full text-center font-semibold">
-                        Contact Us
-                    </a>
-                </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                   Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+                </a>
+                <a href="#about" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                    About
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+
+                </a>
+                <a href="#projects" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                    Projects
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+
+                </a>
+                <a href="#process" class="nav-link relative text-white hover:text-warm-gold transition-all duration-300 font-medium">
+                    Process
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+
+                </a>
+                <a href="#contact" class="bg-warm-gold text-rich-black px-6 py-2 rounded-full hover:bg-wooden-brown transition-all duration-300 font-semibold">
+                   Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-warm-gold transition-all duration-300"></span>
+
+                </a>
             </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-2xl z-50 relative" onclick="toggleMobileMenu()" id="mobileMenuBtn">
+                <i class="fas fa-bars" id="mobileMenuIcon"></i>
+            </button>
         </div>
-    </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden fixed top-0 left-0 w-full h-screen bg-rich-black/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-40" id="mobileMenu">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-white hover:text-warm-gold transition-colors flex items-center text-2xl" onclick="closeMobileMenu()">
+                Home
+            </a>
+            <a href="#about" class="text-white hover:text-warm-gold transition-colors flex items-center text-2xl" onclick="closeMobileMenu()">
+                About
+            </a>
+            <a href="#projects" class="text-white hover:text-warm-gold transition-colors flex items-center text-2xl" onclick="closeMobileMenu()">
+                Projects
+            </a>
+            <a href="#process" class="text-white hover:text-warm-gold transition-colors flex items-center text-2xl" onclick="closeMobileMenu()">
+               Process
+            </a>
+            <a href="#contact" class="bg-warm-gold text-rich-black px-8 py-4 rounded-full text-center font-semibold text-xl" onclick="closeMobileMenu()">
+               Contact Us
+            </a>
+        </div>
+    </div>
+</nav>
+
     
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center gradient-bg">

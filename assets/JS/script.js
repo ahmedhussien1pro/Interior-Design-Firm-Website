@@ -1,16 +1,29 @@
         // Mobile Menu Toggle
         function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('mobileMenuIcon');
-            
-            if (mobileMenu.style.transform === 'translateY(0px)') {
-                mobileMenu.style.transform = 'translateY(-100%)';
-                menuIcon.className = 'fas fa-bars';
-            } else {
-                mobileMenu.style.transform = 'translateY(0px)';
-                menuIcon.className = 'fas fa-times';
-            }
-        }
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('mobileMenuIcon');
+    
+    if (mobileMenu.classList.contains('translate-x-full')) {
+        // Open menu
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        menuIcon.className = 'fas fa-times';
+    } else {
+        // Close menu
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        menuIcon.className = 'fas fa-bars';
+    }
+}
+
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('mobileMenuIcon');
+    
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('translate-x-full');
+    menuIcon.className = 'fas fa-bars';
+}
 
         // Navbar Background on Scroll
         window.addEventListener('scroll', () => {
@@ -19,6 +32,7 @@
             
             if (window.scrollY > 50) {
                 navbar.className = 'fixed top-0 w-full z-40 transition-all duration-500 py-2 bg-rich-black/95 backdrop-blur-lg shadow-2xl';
+            
             } else {
                 navbar.className = 'fixed top-0 w-full z-40 transition-all duration-500 py-4';
             }
